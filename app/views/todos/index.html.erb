@@ -1,0 +1,35 @@
+<h1>Todo List</h1>
+
+<%= link_to "New Todo", new_todo_path %>
+
+<br><br>
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todos.each do |todo| %>
+      <tr>
+        <td>
+            <%# ----------------- this xxx_path (like todo_path) generated from route %>
+            <%# so you dont have to write hardcode like this: %>
+            <%# <%= link_to todo.title, "/todos/#{todo.id}" ... %>
+            <%# https://guides.rubyonrails.org/routing.html#generating-paths-and-urls-from-code %>
+          <%= link_to todo.title, todo_path(todo) %>
+        </td>
+        <td>
+          <%= todo.status ? "Done" : "Pending" %>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_todo_path(todo) %> |
+          <%= link_to "Delete", todo_path(todo), method: :delete, data: { confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

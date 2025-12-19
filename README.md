@@ -1,24 +1,63 @@
-# README
+# el-todo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple todo list using Ruby on Rails.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+### Clone Repository
 
-* System dependencies
+```bash
+git clone https://github.com/erhaem/el-todo
+cd el-todo
+```
 
-* Configuration
+### Install dependencies
 
-* Database creation
+```bash
+bundle install
+```
 
-* Database initialization
+### Database setup
 
-* How to run the test suite
+This project uses PostgreSQL. Please create a PostgreSQL user and development/test databases. Example database names: `el_todo_development` and `el_todo_test`
 
-* Services (job queues, cache servers, search engines, etc.)
+Then do the configuration in [config/database.yml](config/database.yml). Run this following afterwards:
 
-* Deployment instructions
+```bash
+rails db:prepare
+```
 
-* ...
+### Run the app
+
+```bash
+rails s
+```
+
+Access the app at:
+http://localhost:3000
+
+### Project Structure
+
+Directories or files that matter in this project.
+
+```
+app/
+├── models/
+│   └── todo.rb
+├── controllers/
+│   └── todos_controller.rb
+├── views/
+│   └── todos/
+│       ├── index.html.erb
+│       ├── show.html.erb
+│       ├── new.html.erb
+│       ├── edit.html.erb
+│       └── _form.html.erb
+config/
+├── routes.rb
+├── database.yml
+db/
+└── migrate/
+    └── 20251219095513_create_todos.rb
+
+```
